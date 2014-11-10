@@ -164,7 +164,31 @@
                 A global multiplier for the vein width of all vein distributions. 
             </Description>
             <DisplayName>Vein Width</DisplayName>
-        </OptionNumeric> 
+        </OptionNumeric>  
+
+        <OptionChoice name='biomeAffinityGlobal' default='weighted'
+				displayState=':= if(?advOptions,"shown","hidden")'
+				displayGroup='groupGeneral'>
+			<Description> 
+				Determines how biome affects ore generation. 
+			</Description>
+			<DisplayName>Biome Affinity</DisplayName>
+			<Choice value='weighted' displayValue='Weighted'>
+				<Description> 
+					Ores are more common in certain biomes, but can be found in any biome.
+				</Description>
+			</Choice>
+			<Choice value='exclusive' displayValue='Exclusive'>
+				<Description> 
+					Most ores can only spawn in certain biomes, but are fairly common in that biome.
+				</Description>
+			</Choice>
+				<Choice value='none' displayValue='No Affinity'>
+				<Description> 
+					Ores are equally likely to spawn in any biome.
+				</Description>
+			</Choice>
+        </OptionChoice>
 
     </ConfigSection>
     
@@ -239,7 +263,7 @@
             <Setting name='SegmentForkLengthMult' avg='0.75' range='0.25' /> 
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg=':= 15 * veinLength' range=':= 6 * veinLength'/> 
+            <Setting name='SegmentLength' avg='15' range='6'/> 
 			
 			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.50' range='0.50'/> 
@@ -304,7 +328,7 @@
             <Setting name='SegmentAngle' avg='0' range='0.3'/>
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg=':= 8 * veinLength' range=':= 4 * veinLength' type='normal'/> 
+            <Setting name='SegmentLength' avg='8' range='4' type='normal'/> 
 			
 			<!-- The radius of each segment at it's thickest point.
 			Values less than ~0.25 will produce broken or intermittent branches -->
@@ -453,7 +477,7 @@
             <Setting name='SegmentForkLengthMult' avg='0.5' range='0.25'/>
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg=':= 30 * oreSize * veinLength' range=':= 6 * oreSize * veinLength' />
+            <Setting name='SegmentLength' avg='30' range='6' />
 			
 			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.30' range='0.30'/>
@@ -573,7 +597,7 @@
             <Setting name='SegmentForkLengthMult' avg='0' range='0'/> 
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg=':= 20 * veinLength' range=':= 8 * veinLength'/>
+            <Setting name='SegmentLength' avg='20' range='8'/>
 			
 			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.35' range='0.35'/> 
@@ -638,7 +662,7 @@
             <Setting name='SegmentForkLengthMult' avg='0' range='0'/> 
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg=':= 8 * veinLength' range=':= 3 * veinLength'/>
+            <Setting name='SegmentLength' avg='8' range='3'/>
 			
 			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0' range='0.25'/> 
