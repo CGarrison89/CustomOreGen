@@ -164,11 +164,24 @@
             <Description>
                 A master preset for standardgen ore distributions.
             </Description>
+			
+			<!-- Roughly, the number of individual blocks of each cluster. -->
             <Setting name='Size' avg=':= 8 * oreSize' range='0'/> 
+			
+			<!-- The number of clusters per 16x16 chunk. -->
             <Setting name='Frequency' avg=':= 20 * oreFreq' range='0'/> 
+			
+			<!-- The height of clusters in the chunk. -->
             <Setting name='Height' avg=':= 64/64 * dimension.groundLevel' range=':= 64/64 * dimension.groundLevel'/> 
+			
+			<!-- The maximum horizontal distance a cluster in this distribution may spawn 
+			from the center of the nearest cluster/motherlode/cloud of its parent distribution. -->
             <Setting name='ParentRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </StandardGenPreset>
         
@@ -176,22 +189,64 @@
             <Description>
                 Small, fairly rare motherlodes with 2-4 horizontal veins each.
             </Description>
+			
+			<!-- The number of motherlodes per 16x16 chunk. -->
             <Setting name='MotherlodeFrequency' avg=':= 0.025 * oreFreq'/>
+			
+			<!-- Radius of motherlodes. -->
             <Setting name='MotherlodeSize' avg=':= 2.5 * oreSize' range=':= 1 * oreSize'/>
+			
+			<!-- Height at which motherlodes generate. -->
             <Setting name='MotherlodeHeight' avg=':= 32/64 * dimension.groundLevel' range=':= 16/64 * dimension.groundLevel' type='normal'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='MotherlodeRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- The number of branches per motherlode. -->
             <Setting name='BranchFrequency' avg='3' range='2'/> 
+			
+			<!-- The angle from the horizontal plane at which branches leave the motherlode, in radians. -->
             <Setting name='BranchInclination' avg='0' range='0.55'/> 
+			
+			<!-- The length of each branch, in blocks. 
+			Note that this is total length, not just distance from motherlode. -->
             <Setting name='BranchLength' avg='120' range='60'/> 
+			
+			<!-- The maximum vertical distance a branch can extend from the motherlode. 
+			This sets a "ceiling" and a "floor" around the motherlode. -->
             <Setting name='BranchHeightLimit' avg='16'/> 
+			
+			<!-- The probability that a branch will fork into two or more branches at the end of a segment. -->
             <Setting name='SegmentForkFrequency' avg='0.20'/>  
+			
+			<!-- A multiplier to the remaining branch length applied to every fork. -->
             <Setting name='SegmentForkLengthMult' avg='0.75' range='0.25' /> 
+			
+			<!-- The length of each straight branch segment. -->
             <Setting name='SegmentLength' avg='15' range='6'/> 
+			
+			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.50' range='0.50'/> 
+			
+			<!-- The radius of each segment at it's thickest point.
+			Values less than ~0.25 will produce broken or intermittent branches -->
             <Setting name='SegmentRadius' avg=':= 0.5 * oreSize' range=':= 0.3 * oreSize'/>
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
             <Setting name='OreDensity' avg='1' range='0'/> 
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1.0' range='0.1'/> 
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </VeinsPreset>
         
@@ -199,21 +254,61 @@
             <Description> 
                 Single vertical veins that occur with no motherlodes.
             </Description>  
+			
+			<!-- The number of motherlodes per 16x16 chunk. -->
             <Setting name='MotherlodeFrequency' avg=':= 0.080 * oreFreq'/>
+			
+			<!-- Radius of motherlodes. -->
             <Setting name='MotherlodeSize' avg='0' range='0'/>
+			
+			<!-- Height at which motherlodes generate. -->
             <Setting name='MotherlodeHeight' avg=':= 76/64 * dimension.groundLevel' range='4'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='MotherlodeRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- The number of branches per motherlode. -->
             <Setting name='BranchFrequency' avg='1' range='0'/>
+			
+			<!-- The angle from the horizontal plane at which branches leave the motherlode, in radians. -->
             <Setting name='BranchInclination' avg='-1.31' range='0.22'/>
+			
+			<!-- The length of each branch, in blocks. 
+			Note that this is total length, not just distance from motherlode. -->
             <Setting name='BranchLength' avg=':= 48/64 * dimension.groundLevel' range='16' type='normal'/> 
+			
+			<!-- The maximum vertical distance a branch can extend from the motherlode. 
+			This sets a "ceiling" and a "floor" around the motherlode. -->
             <Setting name='BranchHeightLimit' avg='1000'/> 
+			
+			<!-- The probability that a branch will fork into two or more branches at the end of a segment. -->
             <Setting name='SegmentForkFrequency' avg='0.10'/>  
+			
+			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0' range='0.3'/>
+			
+			<!-- The length of each straight branch segment. -->
             <Setting name='SegmentLength' avg='8' range='4' type='normal'/> 
+			
+			<!-- The radius of each segment at it's thickest point.
+			Values less than ~0.25 will produce broken or intermittent branches -->
             <Setting name='SegmentRadius' avg=':= 0.30 * oreSize' range=':= 0.1 * oreSize'/> 
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
             <Setting name='OreDensity' avg='1' range='0'/>
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1.0' range='0.1'/> 
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </VeinsPreset>
         
@@ -221,15 +316,38 @@
             <Description> 
                 Small motherlodes without any branches.
                 Similar to the deposits produced by StandardGen distributions.
-            </Description>        
+            </Description>       
+			
+			<!-- The number of motherlodes per 16x16 chunk. --> 
             <Setting name='MotherlodeFrequency' avg=':= 1.0 * oreFreq' range=':= 0.3 * oreFreq'/>
+			
+			<!-- Radius of motherlodes. -->
             <Setting name='MotherlodeSize' avg=':= 0.9 * oreSize' range=':= 0.3 * oreSize'/>
+			
+			<!-- Height at which motherlodes generate. -->
             <Setting name='MotherlodeHeight' avg=':= 32/64 * dimension.groundLevel' range=':= 16/64 * dimension.groundLevel' type='normal'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='MotherlodeRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- The number of branches per motherlode. -->
             <Setting name='BranchFrequency' avg='0' range='0'/>
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
             <Setting name='OreDensity' avg='1' range='0'/>
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1.0' range='0.1'/> 
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </VeinsPreset>
         
@@ -240,14 +358,37 @@
                 Note that these lava pools are produced by the vanilla cave generator - any mod
                 that changes or removes cave generation will indirectly affect these deposits.
             </Description>          
+			
+			<!-- The number of motherlodes per 16x16 chunk. -->
             <Setting name='MotherlodeFrequency' avg=':= 6.0 * oreFreq' range=':= 2.0 * oreFreq'/>
+			
+			<!-- Radius of motherlodes. -->
             <Setting name='MotherlodeSize' avg=':= 1.5 * oreSize' range=':= 0.8 * oreSize'/>
+			
+			<!-- Height at which motherlodes generate. -->
             <Setting name='MotherlodeHeight' avg='8' range='8' type='uniform'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='MotherlodeRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- The number of branches per motherlode. -->
             <Setting name='BranchFrequency' avg='0' range='0'/> 
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
             <Setting name='OreDensity' avg='1' range='0'/>
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1.0' range='0.1'/> 
+			
+			<!-- Which blocks a distribution will replace. -->
             <Replaces block='minecraft:lava'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </VeinsPreset>
         
@@ -262,27 +403,69 @@
                 shortage.  This might be a good way to add challenge to multiplayer worlds.
                 Credit: based on feedback by dyrewulf from the MC forums.
             </Description>  
+			
+			<!-- The number of motherlodes per 16x16 chunk. -->
             <Setting name='MotherlodeFrequency' avg=':= 0.00025 * oreFreq'/>
+			
+			<!-- Radius of motherlodes. -->
             <Setting name='MotherlodeSize' avg=':= 10 * oreSize' range=':= 6 * oreSize' type='normal'/>
+			
+			<!-- Height at which motherlodes generate. -->
             <Setting name='MotherlodeHeight' avg=':= 45/64 * dimension.groundLevel' range=':= 9/64 * dimension.groundLevel' type='normal'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='MotherlodeRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- The number of branches per motherlode. -->
             <Setting name='BranchFrequency' avg='8' range='4'/>
+			
+			<!-- The angle from the horizontal plane at which branches leave the motherlode, in radians. -->
             <Setting name='BranchInclination' avg='0.7' range='0.85'/>
+			
+			<!-- The length of each branch, in blocks. 
+			Note that this is total length, not just distance from motherlode. -->
             <Setting name='BranchLength' avg=':= 500 * oreSize' range=':= 400 * oreSize' type='normal'/>
+			
+			<!-- The maximum vertical distance a branch can extend from the motherlode. 
+			This sets a "ceiling" and a "floor" around the motherlode. -->
             <Setting name='BranchHeightLimit' avg='1000'/>
+			
+			<!-- The probability that a branch will fork into two or more branches at the end of a segment. -->
             <Setting name='SegmentForkFrequency' avg='0.02'/>
+			
+			<!-- A multiplier to the remaining branch length applied to every fork. -->
             <Setting name='SegmentForkLengthMult' avg='0.5' range='0.25'/>
+			
+			<!-- The length of each straight branch segment. -->
             <Setting name='SegmentLength' avg=':= 30 * oreSize' range=':= 6 * oreSize' />
+			
+			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.30' range='0.30'/>
+			
+			<!-- The radius of each segment at it's thickest point.
+			Values less than ~0.25 will produce broken or intermittent branches -->
             <Setting name='SegmentRadius' avg=':= 0.025 * oreSize' range=':= 0.2 * oreSize'/>
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
             <Setting name='OreDensity' avg='1' range='0'/>
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1' range='0.25'/>
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
             <Replaces block='minecraft:grass'/>
             <Replaces block='minecraft:dirt'/>
             <Replaces block='minecraft:sand'/>
             <Replaces block='minecraft:gravel'/>
             <Replaces block='minecraft:sandstone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </VeinsPreset>
         
@@ -296,17 +479,40 @@
                 ore frequency because it is assumed that the frequency of the parent distribution will already
                 be scaled by that.
             </Description>  
+			
+			<!-- The number of motherlodes per 16x16 chunk. -->
             <Setting name='MotherlodeFrequency' avg=':= 80 * dimension.groundLevel/64' range=':= 30 * dimension.groundLevel/64'/>
+			
+			<!-- Radius of motherlodes. -->
             <Setting name='MotherlodeSize' avg='0.6' range='0'/>
+			
+			<!-- Height at which motherlodes generate. -->
             <Setting name='MotherlodeHeight' avg=':= 50/64 * dimension.groundLevel' range=':= 46/64 * dimension.groundLevel'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='MotherlodeRangeLimit' avg=':= 45 * oreSize' range=':= 30 * oreSize' type='uniform'/>
+			
+			<!-- The number of branches per motherlode. -->
             <Setting name='BranchFrequency' avg='0' range='0'/> 
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
             <Setting name='OreDensity' avg='1' range='0'/>
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1.0' range='0'/> 
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
             <Replaces block='minecraft:dirt'/>
             <Replaces block='minecraft:gravel'/>
             <Replaces block='minecraft:sandstone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </VeinsPreset>
         
@@ -317,22 +523,64 @@
                 compared to solid ore veins.  They are also more difficult to follow, since it is 
                 harder to get an idea of their direction while mining.
             </Description>
-            <Setting name='MotherlodeFrequency' avg=':= 0.0065 * oreFreq'/>            
+			
+			<!-- The number of motherlodes per 16x16 chunk. -->
+            <Setting name='MotherlodeFrequency' avg=':= 0.0065 * oreFreq'/>  
+			
+			<!-- Radius of motherlodes. -->          
             <Setting name='MotherlodeSize' avg=':= 2.3 * oreSize' range=':= 0.5 * oreSize'/>
+			
+			<!-- Height at which motherlodes generate. -->
             <Setting name='MotherlodeHeight' avg=':= 32/64 * dimension.groundLevel' range=':= 32/64 * dimension.groundLevel' type='uniform'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='MotherlodeRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- The number of branches per motherlode. -->
             <Setting name='BranchFrequency' avg='1' range='0'/> 
+			
+			<!-- The angle from the horizontal plane at which branches leave the motherlode, in radians. -->
             <Setting name='BranchInclination' avg='0' range='0.75'/> 
+			
+			<!-- The length of each branch, in blocks. 
+			Note that this is total length, not just distance from motherlode. -->
             <Setting name='BranchLength' avg='180' range='90'/> 
+			
+			<!-- The maximum vertical distance a branch can extend from the motherlode. 
+			This sets a "ceiling" and a "floor" around the motherlode. -->
             <Setting name='BranchHeightLimit' avg='1000'/>
+			
+			<!-- The probability that a branch will fork into two or more branches at the end of a segment. -->
             <Setting name='SegmentForkFrequency' avg='0' range='0'/> 
+			
+			<!-- A multiplier to the remaining branch length applied to every fork. -->
             <Setting name='SegmentForkLengthMult' avg='0' range='0'/> 
+			
+			<!-- The length of each straight branch segment. -->
             <Setting name='SegmentLength' avg='20' range='8'/>
+			
+			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.35' range='0.35'/> 
+			
+			<!-- The radius of each segment at it's thickest point.
+			Values less than ~0.25 will produce broken or intermittent branches -->
             <Setting name='SegmentRadius' avg=':= 2.0 * oreSize' range=':= 1.0 * oreSize'/> 
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
             <Setting name='OreDensity' avg='0.04' range='0'/>
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1.0' range='0.1'/> 
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </VeinsPreset>
 
@@ -340,22 +588,64 @@
             <Description>
                 Short sparsely filled veins sloping up from near the bottom of the map.
             </Description>
-            <Setting name='MotherlodeFrequency' avg=':= 0.06 * oreFreq'/>            
+			
+			<!-- The number of motherlodes per 16x16 chunk. -->
+            <Setting name='MotherlodeFrequency' avg=':= 0.06 * oreFreq'/>           
+			
+			<!-- Radius of motherlodes. --> 
             <Setting name='MotherlodeSize' avg=':= 2.3 * oreSize' range=':= 0.5 * oreSize'/>
+			
+			<!-- Height at which motherlodes generate. -->
             <Setting name='MotherlodeHeight' avg=':= 8/64 * dimension.groundLevel' range=':= 8/64 * dimension.groundLevel' type='uniform'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='MotherlodeRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- The number of branches per motherlode. -->
             <Setting name='BranchFrequency' avg='1' range='0'/> 
+			
+			<!-- The angle from the horizontal plane at which branches leave the motherlode, in radians. -->
             <Setting name='BranchInclination' avg='0.75' range='0.7' type='normal'/>
+			
+			<!-- The length of each branch, in blocks. 
+			Note that this is total length, not just distance from motherlode. -->
             <Setting name='BranchLength' avg='40' range='10'/>
+			
+			<!-- The maximum vertical distance a branch can extend from the motherlode. 
+			This sets a "ceiling" and a "floor" around the motherlode. -->
             <Setting name='BranchHeightLimit' avg='1000'/>
+			
+			<!-- The probability that a branch will fork into two or more branches at the end of a segment. -->
             <Setting name='SegmentForkFrequency' avg='0' range='0'/> 
+			
+			<!-- A multiplier to the remaining branch length applied to every fork. -->
             <Setting name='SegmentForkLengthMult' avg='0' range='0'/> 
+			
+			<!-- The length of each straight branch segment. -->
             <Setting name='SegmentLength' avg='8' range='3'/>
+			
+			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0' range='0.25'/> 
+			
+			<!-- The radius of each segment at it's thickest point.
+			Values less than ~0.25 will produce broken or intermittent branches -->
             <Setting name='SegmentRadius' avg=':= 2.0 * oreSize' range=':= 0.5 * oreSize'/> 
-            <Setting name='OreDensity' avg='0.04' range='0'/>
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
+            <Setting name='OreDensity' avg='0.04' range='0'/> 
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1.0' range='0.1'/> 
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </VeinsPreset>         
 
@@ -368,18 +658,48 @@
                 one and then set up a semi-permanent mining base and spend some time actually mining
                 the ore.
             </Description>
+			
+			<!-- The number of clouds per 16x16 chunk. -->
             <Setting name='DistributionFrequency' avg=':= 0.001 * oreFreq'/>
+			
+			<!-- The maximum horizontal distance a motherlode of this distribution may spawn from the 
+			center of the nearest motherlode/cloud/cluster of its parent distribution. 
+			If the distribution has no parent, this setting is ignored. -->
             <Setting name='ParentRangeLimit' avg='32' range='32' type='normal'/>
+			
+			<!-- Horizontal radius of cloud. -->
             <Setting name='CloudRadius' avg=':= 25 * oreSize' range=':= 10 * oreSize'/>
+			
+			<!-- Vertical radius of cloud. -->
             <Setting name='CloudThickness' avg=':= 14 * oreSize' range=':= 6 * oreSize'/>
+			
+			<!-- The noise level for the cloud surface. -->
             <Setting name='CloudSizeNoise' avg='0.2'/>
+			
+			<!-- Height at which clouds generate. -->
             <Setting name='CloudHeight' avg='32' range='16'
                      type='normal' scaleTo='sealevel'/>
+			
+			<!-- The "tilt" angle of the cloud from the horizontal XZ plane, in radians. -->
             <Setting name='CloudInclination' avg='0' range='0.35'/>
+			
+			<!-- A per-block multiplier to the maximum allowable radius for motherlodes and segments.
+			Increasing the range will make ore placement more "ragged" at the edges. -->
             <Setting name='OreRadiusMult' avg='1' range='0.1'/>
+			
+			<!-- A per-block density multiplier. 
+			This setting multiplies the weight of each ore block to determine the 
+			overall probability that that block will be placed. -->
             <Setting name='OreDensity' avg='0.1'/>
+			
+			<!-- A per-block internal density noise cutoff. The interior of each cloud has its own noise field, 
+			and ore will only be placed if the field value at that location is above this cutoff. -->
             <Setting name='OreVolumeNoiseCutoff' avg='0.5'/> 
+			
+			<!-- Which blocks a distribution will replace. -->
             <ReplacesOre block='stone'/>
+			
+			<!-- Which biomes a distribution will spawn in. -->
             <Biome name='.*'/>
         </CloudPreset>
         
