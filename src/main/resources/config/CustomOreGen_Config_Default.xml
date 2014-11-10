@@ -76,6 +76,20 @@
             </Description>
             <DisplayName>Ore Deposit Size</DisplayName>
         </OptionNumeric> 
+        
+        <OptionNumeric name='veinLength' default='1' min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupGeneral'>
+            <Description> 
+                A global multiplier for the vein length of all vein distributions. 
+            </Description>
+            <DisplayName>Vein Length</DisplayName>
+        </OptionNumeric> 
+        
+        <OptionNumeric name='veinWidth' default='1' min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupGeneral'>
+            <Description> 
+                A global multiplier for the vein width of all vein distributions. 
+            </Description>
+            <DisplayName>Vein Width</DisplayName>
+        </OptionNumeric> 
        
         <OptionChoice name='debugMode' default='false' displayState='shown_dynamic' displayGroup='groupGeneral'>
             <Description> 
@@ -212,7 +226,7 @@
 			
 			<!-- The length of each branch, in blocks. 
 			Note that this is total length, not just distance from motherlode. -->
-            <Setting name='BranchLength' avg='120' range='60'/> 
+            <Setting name='BranchLength' avg='120 * veinLength' range='60 * veinLength'/> 
 			
 			<!-- The maximum vertical distance a branch can extend from the motherlode. 
 			This sets a "ceiling" and a "floor" around the motherlode. -->
@@ -225,14 +239,14 @@
             <Setting name='SegmentForkLengthMult' avg='0.75' range='0.25' /> 
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg='15' range='6'/> 
+            <Setting name='SegmentLength' avg='15 * veinLength' range='6 * veinLength'/> 
 			
 			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.50' range='0.50'/> 
 			
 			<!-- The radius of each segment at it's thickest point.
 			Values less than ~0.25 will produce broken or intermittent branches -->
-            <Setting name='SegmentRadius' avg=':= 0.5 * oreSize' range=':= 0.3 * oreSize'/>
+            <Setting name='SegmentRadius' avg=':= 0.5 * oreSize * veinWidth' range=':= 0.3 * oreSize * veinWidth'/>
 			
 			<!-- A per-block density multiplier. 
 			This setting multiplies the weight of each ore block to determine the 
@@ -277,7 +291,7 @@
 			
 			<!-- The length of each branch, in blocks. 
 			Note that this is total length, not just distance from motherlode. -->
-            <Setting name='BranchLength' avg=':= 48/64 * dimension.groundLevel' range='16' type='normal'/> 
+            <Setting name='BranchLength' avg=':= 48/64 * dimension.groundLevel * veinLength' range='16 * veinLength' type='normal'/> 
 			
 			<!-- The maximum vertical distance a branch can extend from the motherlode. 
 			This sets a "ceiling" and a "floor" around the motherlode. -->
@@ -290,11 +304,11 @@
             <Setting name='SegmentAngle' avg='0' range='0.3'/>
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg='8' range='4' type='normal'/> 
+            <Setting name='SegmentLength' avg='8 * veinLength' range='4 * veinLength' type='normal'/> 
 			
 			<!-- The radius of each segment at it's thickest point.
 			Values less than ~0.25 will produce broken or intermittent branches -->
-            <Setting name='SegmentRadius' avg=':= 0.30 * oreSize' range=':= 0.1 * oreSize'/> 
+            <Setting name='SegmentRadius' avg=':= 0.30 * oreSize * veinWidth' range=':= 0.1 * oreSize * veinWidth'/> 
 			
 			<!-- A per-block density multiplier. 
 			This setting multiplies the weight of each ore block to determine the 
@@ -426,7 +440,7 @@
 			
 			<!-- The length of each branch, in blocks. 
 			Note that this is total length, not just distance from motherlode. -->
-            <Setting name='BranchLength' avg=':= 500 * oreSize' range=':= 400 * oreSize' type='normal'/>
+            <Setting name='BranchLength' avg=':= 500 * oreSize * veinLength' range=':= 400 * oreSize * veinLength' type='normal'/>
 			
 			<!-- The maximum vertical distance a branch can extend from the motherlode. 
 			This sets a "ceiling" and a "floor" around the motherlode. -->
@@ -439,14 +453,14 @@
             <Setting name='SegmentForkLengthMult' avg='0.5' range='0.25'/>
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg=':= 30 * oreSize' range=':= 6 * oreSize' />
+            <Setting name='SegmentLength' avg=':= 30 * oreSize * veinLength' range=':= 6 * oreSize * veinLength' />
 			
 			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.30' range='0.30'/>
 			
 			<!-- The radius of each segment at it's thickest point.
 			Values less than ~0.25 will produce broken or intermittent branches -->
-            <Setting name='SegmentRadius' avg=':= 0.025 * oreSize' range=':= 0.2 * oreSize'/>
+            <Setting name='SegmentRadius' avg=':= 0.025 * oreSize * veinWidth' range=':= 0.2 * oreSize * veinWidth'/>
 			
 			<!-- A per-block density multiplier. 
 			This setting multiplies the weight of each ore block to determine the 
@@ -546,7 +560,7 @@
 			
 			<!-- The length of each branch, in blocks. 
 			Note that this is total length, not just distance from motherlode. -->
-            <Setting name='BranchLength' avg='180' range='90'/> 
+            <Setting name='BranchLength' avg='180 * veinLength' range='90 * veinLength'/> 
 			
 			<!-- The maximum vertical distance a branch can extend from the motherlode. 
 			This sets a "ceiling" and a "floor" around the motherlode. -->
@@ -559,14 +573,14 @@
             <Setting name='SegmentForkLengthMult' avg='0' range='0'/> 
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg='20' range='8'/>
+            <Setting name='SegmentLength' avg='20 * veinLength' range='8 * veinLength'/>
 			
 			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0.35' range='0.35'/> 
 			
 			<!-- The radius of each segment at it's thickest point.
 			Values less than ~0.25 will produce broken or intermittent branches -->
-            <Setting name='SegmentRadius' avg=':= 2.0 * oreSize' range=':= 1.0 * oreSize'/> 
+            <Setting name='SegmentRadius' avg=':= 2.0 * oreSize * veinWidth' range=':= 1.0 * oreSize * veinWidth'/> 
 			
 			<!-- A per-block density multiplier. 
 			This setting multiplies the weight of each ore block to determine the 
@@ -611,7 +625,7 @@
 			
 			<!-- The length of each branch, in blocks. 
 			Note that this is total length, not just distance from motherlode. -->
-            <Setting name='BranchLength' avg='40' range='10'/>
+            <Setting name='BranchLength' avg='40 * veinLength' range='10 * veinLength'/>
 			
 			<!-- The maximum vertical distance a branch can extend from the motherlode. 
 			This sets a "ceiling" and a "floor" around the motherlode. -->
@@ -624,14 +638,14 @@
             <Setting name='SegmentForkLengthMult' avg='0' range='0'/> 
 			
 			<!-- The length of each straight branch segment. -->
-            <Setting name='SegmentLength' avg='8' range='3'/>
+            <Setting name='SegmentLength' avg='8 * veinLength' range='3 * veinLength'/>
 			
 			<!-- The angle at which each segment diverges from the last segment in the branch, in radians. -->
             <Setting name='SegmentAngle' avg='0' range='0.25'/> 
 			
 			<!-- The radius of each segment at it's thickest point.
 			Values less than ~0.25 will produce broken or intermittent branches -->
-            <Setting name='SegmentRadius' avg=':= 2.0 * oreSize' range=':= 0.5 * oreSize'/> 
+            <Setting name='SegmentRadius' avg=':= 2.0 * oreSize * veinWidth' range=':= 0.5 * oreSize * veinWidth'/> 
 			
 			<!-- A per-block density multiplier. 
 			This setting multiplies the weight of each ore block to determine the 
